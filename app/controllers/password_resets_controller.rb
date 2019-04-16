@@ -1,7 +1,7 @@
 class PasswordResetsController < ApplicationController
-  before_action :get_user,         only: [:edit, :update]
-  before_action :valid_user,       only: [:edit, :update]
-  before_action :check_expiration, only: [:edit, :update]    # Case (1)
+  before_action :get_user,          only: [:edit, :update]
+  before_action :valid_user,        only: [:edit, :update]
+  before_action :check_expiration,  only: [:edit, :update] # Case 1: Expired Password Reset
 
   def new
   end
@@ -20,18 +20,21 @@ class PasswordResetsController < ApplicationController
   end
 
   def edit
+    if @user && @user.activated? && @user.authenticated?(:reset, params[:id])
+    end
   end
 
   def update
-    if params[:user][:password].empty?                  # Case (3)
-      @user.errors.add(:password, "can't be empty")
+    if params[:user][:password].empty? # Case 3: Empty Password
+      @user.errors.add(:password, "cant be empty")
       render 'edit'
-    elsif @user.update_attributes(user_params)          # Case (4)
+    elsif @user.update_attributes(user_params) # Case 4: Successful update
       log_in @user
+      @user.update_attribute(:reset_digest, nil)
       flash[:success] = "Password has been reset."
       redirect_to @user
     else
-      render 'edit'                                     # Case (2)
+      render 'edit' # Case 2: Invalid password
     end
   end
 
@@ -41,16 +44,13 @@ class PasswordResetsController < ApplicationController
       params.require(:user).permit(:password, :password_confirmation)
     end
 
-    # Before filters
-
     def get_user
       @user = User.find_by(email: params[:email])
     end
 
     # Confirms a valid user.
     def valid_user
-      unless (@user && @user.activated? &&
-              @user.authenticated?(:reset, params[:id]))
+      unless (@user && @user.activated? && @user.authenticated?(:reset, params[:id]))
         redirect_to root_url
       end
     end
