@@ -1,29 +1,40 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "sample app", root_path , id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Help", help_path %></li>
-        <% if logged_in? %>
-          <li><%= link_to "Users", users_path %></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Account <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to "Log out", logout_path, method: :delete %>
-              </li>
-            </ul>
-          </li>
-        <% else %>
-           <li><%= link_to "Log in", login_path %></li>
-        <% end %>
-      </ul>
-    </nav>
+   <!-- Setting navbar using Bootstrap Framework with appropriate background color -->
+    <header class="navbar navbar-expand-lg navbar-light" style="background-color: #eaffff;">
+  <a class="navbar-brand" href="#">Кулінарні рецепти</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <!-- Link that redirect us to Main Page -->
+        <a class="nav-link" href="#">Головна сторінка <span class="sr-only">(current)</span></a>
+      </li>
+
+      <!-- Dropdown menu for recipes sections -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Розділи
+        </a>
+
+        <!-- Sections of dropdown menu -->
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Усі</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Перші страви</a>
+          <a class="dropdown-item" href="#">Другі страви</a>
+          <a class="dropdown-item" href="#">Випічка</a>
+          <a class="dropdown-item" href="#">Десерти</a>
+          <a class="dropdown-item" href="#">Салати та закуски</a>
+        </div>
+      </li>
+    </ul>
+    <!-- Name of current user -->
+    <span class="navbar-text mr-3">
+      Олександр
+    </span>
+    <!-- Button for log in and log out, depends on state -->
+     <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Вийти</button>
   </div>
 </header>
