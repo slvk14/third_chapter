@@ -1,6 +1,6 @@
    <!-- Setting navbar using Bootstrap Framework with appropriate background color -->
     <header class="navbar navbar-expand-lg navbar-light" style="background-color: #eaffff;">
-  <a class="navbar-brand" href="#">Кулінарні рецепти</a>
+  <%= link_to "Кулінарні рецепти", root_path, class: "navbar-brand" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -31,10 +31,17 @@
       </li>
     </ul>
     <!-- Name of current user -->
-    <span class="navbar-text mr-3">
-      Олександр
-    </span>
+    
+    <% if logged_in? %>
+      <span class="navbar-text mr-5">
+        <%= link_to current_user.name , current_user %>
+      </span>
+    <%= link_to "Log out", logout_path, method: :delete, class: "btn btn-outline-secondary my-2 my-sm-0", type: "submit" %>
+
+    <% else %>
     <!-- Button for log in and log out, depends on state -->
-     <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Вийти</button>
+     <%= link_to "Log in", login_path, class: "btn btn-outline-secondary my-2 my-sm-0", type: "submit" %>
+     <%= link_to "Sign Up", signup_path , class: "btn btn-outline-secondary my-2 my-sm-0 ml-3", type: "submit" %>
+     <% end %>
   </div>
 </header>
