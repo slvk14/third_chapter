@@ -80,6 +80,7 @@ span.picture {
 
 section {
   overflow: auto;
+  margin-left: 20px;
 }
 
 textarea {
@@ -213,8 +214,8 @@ aside {
   a {
     float: left;
     padding: 0 10px;
-    border-left: 1px solid $gray-lighter;
-    color: gray;
+    border-left: 2px solid $gray-lighter;
+    color: black;
     &:first-child {
       padding-left: 0;
       border: 0;
