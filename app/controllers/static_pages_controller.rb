@@ -14,6 +14,28 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
+
+  def first_dishes
+    if logged_in?
+      @micropost = current_user.microposts.build
+      @first_feed_items = current_user.first_feed.paginate(page: params[:page])
+    end
+  end
+
+  def second_dishes
+    if logged_in?
+      @micropost = current_user.microposts.build
+      @second_feed_items = current_user.second_feed.paginate(page: params[:page])
+    end
+  end
+
+  def bakery
+    if logged_in?
+      @micropost = current_user.microposts.build
+      @bake_feed_items = current_user.bake_feed.paginate(page: params[:page])
+    end
+  end
+
 end
 
 # In Plain Ruby, an empty method would do nothing

@@ -20,13 +20,13 @@
 
         <!-- Sections of dropdown menu -->
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Усі</a>
+          <%= link_to 'Усі' , root_path %>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Перші страви</a>
-          <a class="dropdown-item" href="#">Другі страви</a>
-          <a class="dropdown-item" href="#">Випічка</a>
-          <a class="dropdown-item" href="#">Десерти</a>
-          <a class="dropdown-item" href="#">Салати та закуски</a>
+          <%= link_to 'Перші страви' , first_dishes_path %>
+          <br>
+          <%= link_to 'Другі страви' , second_dishes_path %>
+          <br>
+          <%= link_to 'Випічка' , bakery_path %>
         </div>
       </li>
     </ul>

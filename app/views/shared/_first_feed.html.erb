@@ -1,0 +1,8 @@
+<% if @first_feed_items.any? %>
+  	<div class="pl-5 pr-5 py-2">
+   <div class="row" style="margin: 0"> 
+    <%= render @first_feed_items %>
+  </div>  
+</div>
+  <%= will_paginate @first_feed_items %>
+<% end %>

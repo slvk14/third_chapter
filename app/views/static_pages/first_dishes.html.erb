@@ -1,0 +1,13 @@
+<% provide(:title, "Home | Frist dishes") %>
+<!-- Setting Jumbotron using Bootstrap Framework with special background color and specific opacity -->
+<div class="pl-5 pr-5">
+<div class="jumbotron jumbotron-fluid" style="background-color: #eaffff; opacity: 0.85">
+  <div class="container">
+    <h1 class="display-4">Найкращі кулінарні рецепти: апетитні та різноманітні страви</h1>
+  </div>
+</div>
+<% if logged_in? %>
+<%= render 'shared/micropost_form' %>
+<%= render 'shared/first_feed' %>
+<% end %>
+</div>

@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get  '/about',   to: 'static_pages#about'
   get  '/contact', to: 'static_pages#contact'
   get  '/signup',  to: 'users#new'
+  get   '/first_dishes', to: 'static_pages#first_dishes'
+  get   '/second_dishes', to: 'static_pages#second_dishes'
+  get   '/bakery', to: 'static_pages#bakery'
   resources :users
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'

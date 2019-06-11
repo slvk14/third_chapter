@@ -1,0 +1,8 @@
+<% if @bake_feed_items.any? %>
+  	<div class="pl-5 pr-5 py-2">
+   <div class="row" style="margin: 0"> 
+    <%= render @bake_feed_items %>
+  </div>  
+</div>
+  <%= will_paginate @bake_feed_items %>
+<% end %>
